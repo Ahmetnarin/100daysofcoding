@@ -1,3 +1,6 @@
 John Doe
 Jane Smith
 Bob Johnson
+Hans Mueller
+Beni Jeni
+Denis Tennis
