@@ -1,5 +1,5 @@
-highscore = 122344546546545272727
+highscore = 12234454654654
 path_on_desktop = 'C:\\Users\\AHNARIN\\Desktop\\doc.txt'
-path = "log.txt"
-with open(path, 'w') as file:
+path = "day24of100\log.txt"
+with open(pa, 'w') as file:
     file.write(str(highscore))
