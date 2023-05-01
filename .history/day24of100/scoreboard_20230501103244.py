@@ -29,7 +29,7 @@ class Scoreboard(Turtle):
     # Load high score from file 
     def load_high_score(self):
         try:
-            with open("high_score.txt", "r") as file:
+            with open("./data.txt", "r") as file:
                 self.highscore = int(file.read())
             return self.highscore
         except FileNotFoundError:
@@ -39,7 +39,7 @@ class Scoreboard(Turtle):
 
     # Save high score to file  
     def save_highscore(self, highscore):
-        with open("high_score.txt" , "w") as file:
+        with open("data.txt" , "w") as file:
             file.write(str(self.highscore))
 
     def update_scoreboard(self):

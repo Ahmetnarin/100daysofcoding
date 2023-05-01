@@ -15,7 +15,28 @@ class Scoreboard(Turtle):
         self.hideturtle()
         self.update_scoreboard()
 
+     # Load high score from file 
+    def load_high_score(self):
+        with open("data.txt", "r") as file:
+            self.highscore = int(file.read())
+        return self.highscore
     
+
+    # Save high score to file  
+    def save_highscore(self, highscore):
+        with open("data.txt" , "w") as file:
+            file.write(str(self.highscore))
+
+    def update_scoreboard(self):
+        self.clear()
+        self.write(f"Score: {self.score} High Score: {self.load_high_score()}", align=ALIGNMENT, font=FONT)
+
+    def reset(self):
+        if self.score > self.load_high_score():
+            save_highscore(score) = self.score 
+        self.score = 0 
+        self.update_scoreboard()
+
     # def game_over(self):
     #     self.goto(0, 0)
     #     self.write("GAME OVER", align=ALIGNMENT, font=FONT)
@@ -26,31 +47,5 @@ class Scoreboard(Turtle):
         # self.highscore.write(f"{self.score}")
         self.update_scoreboard()
 
-    # Load high score from file 
-    def load_high_score(self):
-        try:
-            with open("high_score.txt", "r") as file:
-                self.highscore = int(file.read())
-            return self.highscore
-        except FileNotFoundError:
-            # Handle the error
-            print('Error: File not found.')
-    
-
-    # Save high score to file  
-    def save_highscore(self, highscore):
-        with open("high_score.txt" , "w") as file:
-            file.write(str(self.highscore))
-
-    def update_scoreboard(self):
-        self.clear()
-        self.write(f"Score: {self.score} High Score: {self.load_high_score()}", align=ALIGNMENT, font=FONT)
-
-    def reset(self):
-        if self.score > self.load_high_score():
-            self.highscore = self.score 
-            self.save_highscore(highscore=self.highscore)
-        self.score = 0 
-        self.update_scoreboard()
-
+   
 
