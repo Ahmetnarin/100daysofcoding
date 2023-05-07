@@ -1,5 +1,6 @@
 # import csv
 csv_file = "C://Users//AHNARIN//Desktop//Ahnarin//100_days_of_coding//day25of100//weather_data.csv"
+new_file_to_save_csv_file = "C://Users//AHNARIN//Desktop//Ahnarin//100_days_of_coding//day25of100//new_data.csv"
 
 # with open(csv_file, newline="") as csvfile:
 #     reader = csv.reader(csvfile)
@@ -26,18 +27,44 @@ csv_file = "C://Users//AHNARIN//Desktop//Ahnarin//100_days_of_coding//day25of100
 import pandas 
 
 data = pandas.read_csv(csv_file)
-print(data["temp"])
-print(data["day"])
+# print(data["temp"])
+# print(data["day"])
 
 data_dict = data.to_dict()
-print(data_dict)
+# print(data_dict)
 
-print(data["temp"].to_list())
-print(data["day"].to_list())
+# print(len(data["temp"].to_list()))
+# print(len(data["day"].to_list()))
 
 average_temp = data["temp"].mean()
+max_value = data["temp"].max()
 
 print()
 print()
-print(average_temp)
+# print(type(average_temp) )
+# print(max_value)
+# print(len(data.day ))
+
+# get the data from a row
+# print(data[data.temp == max_value])
+
+def celcius_to_fahrenheit(celcius):
+    fahrenheit = (celcius * 9/5) + 32
+    return fahrenheit
+
+# get the monday temperature and convert into fahrenheit
+monday = data[data.day == "Monday"]
+monday_temp = int(monday.temp)
+
+print(f"{monday_temp} converted into fahrenheit {celcius_to_fahrenheit(monday_temp)}")
+
+# Create a dataframe from scratch
+data_dict = {
+    "students": ["Amy", "James", "Angela" ],
+    "scores": [76,56,65]
+}
+
+data = pandas.DataFrame(data_dict)
+data.to_csv(new_file_to_save_csv_file)
+
 
