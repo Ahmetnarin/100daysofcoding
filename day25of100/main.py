@@ -1,6 +1,7 @@
 # import csv
 csv_file = "C://Users//AHNARIN//Desktop//Ahnarin//100_days_of_coding//day25of100//weather_data.csv"
 new_file_to_save_csv_file = "C://Users//AHNARIN//Desktop//Ahnarin//100_days_of_coding//day25of100//new_data.csv"
+sq_data = "C://Users//AHNARIN//Desktop//Ahnarin//100_days_of_coding//day25of100//2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv"
 
 # with open(csv_file, newline="") as csvfile:
 #     reader = csv.reader(csvfile)
@@ -27,6 +28,7 @@ new_file_to_save_csv_file = "C://Users//AHNARIN//Desktop//Ahnarin//100_days_of_c
 import pandas 
 
 data = pandas.read_csv(csv_file)
+
 # print(data["temp"])
 # print(data["day"])
 
@@ -66,5 +68,9 @@ data_dict = {
 
 data = pandas.DataFrame(data_dict)
 data.to_csv(new_file_to_save_csv_file)
+
+# read the data from squirrel data
+data_from_sq = pandas.read_csv(sq_data)
+fur_color_data = data_from_sq["Primary Fur Color"]
 
 
