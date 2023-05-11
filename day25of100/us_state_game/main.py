@@ -23,6 +23,7 @@ def check_user_input(answer_state):
                 return True 
     return False 
 
+
 game_is_on = True
 score = 0
 correct_guess = []
@@ -48,8 +49,7 @@ while game_is_on:
     else:
         print("No match found in CSV file.")
         game_is_on = False
-
-
+        
 print(correct_guess)
 
 
