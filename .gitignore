@@ -1,1 +1,3 @@
-day25of100/us_state_game/test.csv
+.history
+day25of100/us_state_game/*.csv
+day25of100/us_state_game/*.gif
