@@ -49,19 +49,9 @@ print(type(black))
 
 data_dict = {
     "Fur color" : ["Gray", "Cinnamon", "Black"],
-    "anzahl": [gray[0],cinnamon[0], black[0]]
+    "count": [gray[0],cinnamon[0], black[0]]
     }
 
 data=pd.DataFrame(data_dict)
 data.to_csv(save_filtered_data)
 
-
-
-
-
-
-
-
-# data_dict = {
-#     "Fur color": []
-# }
