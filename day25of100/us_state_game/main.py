@@ -29,7 +29,7 @@ score = 0
 correct_guess = []
 while game_is_on:
     answer_state =  screen.textinput(title ="Guess the state", prompt="What is another state's name?").title()
-    print(answer_state)
+    # print(answer_state)
 
     if check_user_input(answer_state):
         score += 1
@@ -43,7 +43,7 @@ while game_is_on:
         tr = turtle.Turtle()
         tr.penup()
         tr.goto(x_values,y_values)
-        tr.write(answer_state, align="center", font=("Arial", 12, "normal"))
+        tr.write(answer_state, align="center", font=("Arial", 6, "normal"))
         # Hide the turtle cursor
         tr.hideturtle()
     else:
@@ -51,6 +51,7 @@ while game_is_on:
         game_is_on = False
         
 print(correct_guess)
+print()
 
 
 screen.exitonclick()
