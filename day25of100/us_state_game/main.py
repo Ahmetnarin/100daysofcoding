@@ -12,9 +12,6 @@ csv_file = "C://Users//AHNARIN//Desktop//Ahnarin//100_days_of_coding//day25of100
 screen.addshape(image)
 turtle.shape(image)
 
-
-
-
 def check_user_input(answer_state):
     with open(csv_file, 'r') as file:
         reader = csv.reader(file)
@@ -48,6 +45,7 @@ while game_is_on:
         tr.hideturtle()
     else:
         print("No match found in CSV file.")
+        print(f"Your score is {score}")
         game_is_on = False
         
 print(correct_guess)
