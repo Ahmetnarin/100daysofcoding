@@ -27,13 +27,12 @@ correct_guess = []
 while game_is_on:
     answer_state =  screen.textinput(title ="Guess the state", prompt="What is another state's name?").title()
     # print(answer_state)
-
     if check_user_input(answer_state):
         score += 1
         correct_guess.append(answer_state)
         print("Match found in CSV file.")
         data = pd.read_csv(csv_file)
-        filtered_data = data[data["state"] == answer_state]
+        filtered_data = data[data.state == answer_state]
         print(filtered_data["x"])
         x_values = int(filtered_data["x"])
         y_values = int(filtered_data["y"])
