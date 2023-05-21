@@ -25,29 +25,15 @@ for (index, row) in student_data_frame.iterrows():
 import csv 
 csv_file = "C://Users//AHNARIN//Desktop//Ahnarin//100_days_of_coding//day26of100//NATO-alphabet-start//nato_phonetic_alphabet.csv"
 
-with open(csv_file, 'r') as file:
-    reader = csv.reader(file)
-    data_dict = {key: value for (key, value) in reader }
+data = pandas.read_csv(csv_file)
+phonetic_dict = {row.letter: row.code for (index, row) in data.iterrows() }
+print(phonetic_dict)
 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
 user_input = input("Give me your name!  ").upper()
-character_list = [char for char in user_input]
+character_list = [phonetic_dict[letter] for letter in user_input]
 print(character_list)
 
-
-# for (key, value) in data_dict.items():
-#     # print(key)
-#     # print(value)
-#     print(character_list)
-
-my_data = pandas.DataFrame(data_dict)
-
-# for (index , row) in my_data.iterrows():
-#     print(index,row)
-
-for letter in character_list:
-    if letter in data_dict:
-        print(data_dict[letter])
 
 
 
