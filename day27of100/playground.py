@@ -37,4 +37,3 @@ my_car = Car(make="Nissan") # , model="GT-R")
 print(my_car.make)
 # print(my_car.model)
 
-
