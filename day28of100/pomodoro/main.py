@@ -32,6 +32,9 @@ def countdown(count):
         window.after(1000, countdown, count - 1)
 
 
+        
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
