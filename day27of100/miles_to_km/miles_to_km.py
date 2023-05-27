@@ -4,7 +4,7 @@ from tkinter import *
 
 window = Tk()
 window.title("Miles to Km converter")
-window.minsize(width=500, height = 500)
+window.minsize(width=300, height = 50)
 
 # Entry 
 input = Entry(width=10)
@@ -35,9 +35,7 @@ def convert_miles_to_km():
 calc_button = Button(text="convert", command=convert_miles_to_km)
 calc_button.grid(column=1, row=2)
 
-# new button 
-# new_button = Button(text="click new button")
-# new_button.grid(column=2, row=0)
+
 
 
 
