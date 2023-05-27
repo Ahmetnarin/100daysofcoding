@@ -8,6 +8,7 @@ window.minsize(width=500, height=300)
 # Label 
 my_label = Label(text="I am a label!", font=("Arial", 24 , "bold"))
 my_label.pack()
+my_label.grid(column=0, row=0)
 
 my_label["text"] = "New Text"
 my_label.config(text="New Text")
