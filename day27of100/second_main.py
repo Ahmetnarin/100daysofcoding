@@ -26,7 +26,7 @@ new_button.grid(column=2, row=0)
 # Entry 
 input = Entry(width=10)
 print(input.get())
-input.grid(column=2, row=2)
+input.grid(column=3, row=2)
 
 
 
