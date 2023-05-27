@@ -26,13 +26,13 @@ import time
 #         time.sleep(1)
 #         seconds -= 1
 
+
+
+
 def countdown(count):
     canvas.itemconfig(timer_text, text=count)
     if count > 0:
         window.after(1000, countdown, count - 1)
-
-
-        
 
 
 # ---------------------------- UI SETUP ------------------------------- #
