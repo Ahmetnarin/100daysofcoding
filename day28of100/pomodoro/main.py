@@ -19,15 +19,17 @@ def reset_timer():
     canvas.itemconfig(timer_text, text= "00:00")
     global reps 
     reps = 0
+    start_button.config(state=NORMAL)
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 import datetime 
 
 def start_timer():
+    start_button.config(state=DISABLED)
     global reps
-    work_sec = 1 * 60
-    short_break_sec =  1 * 60
-    long_break_sec = 1 * 60
+    work_sec = WORK_MIN * 60
+    short_break_sec =  SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
 
     reps += 1
     if reps % 2 != 0:
