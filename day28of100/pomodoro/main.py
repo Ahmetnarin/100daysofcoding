@@ -9,8 +9,16 @@ WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 reps = 0 
+timer = None
 
 # ---------------------------- TIMER RESET ------------------------------- # 
+def reset_timer():
+    window.after_cancel(timer)
+    timer_label.config(text="Timer")
+    check_mark.config(text="")
+    canvas.itemconfig(timer_text, text= "00:00")
+    global reps 
+    reps = 0
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 import datetime 
@@ -26,14 +34,15 @@ def start_timer():
         countdown(work_sec)
         # print("reps % 2 != 0--> ", reps)
         timer_label.config(text="WORK" ,font=(FONT_NAME, 40 , "bold"), fg=GREEN, bg=YELLOW)
+        
     if reps == 8:
         countdown(long_break_sec)
         # print("reps == 8--> ", reps)
-        timer_label.config(text="LONG BREAK" ,font=(FONT_NAME, 40 , "bold"), fg=GREEN, bg=YELLOW)
+        timer_label.config(text="LONG BREAK" ,font=(FONT_NAME, 40 , "bold"), fg=RED, bg=YELLOW)
     if reps % 2 == 0:
         countdown(short_break_sec)
         # print("reps % 2 == 0--> ",reps)
-        timer_label.config(text="SHORT BREAK", font=(FONT_NAME, 40 , "bold"), fg=GREEN, bg=YELLOW)
+        timer_label.config(text="SHORT BREAK", font=(FONT_NAME, 40 , "bold"), fg=PINK, bg=YELLOW)
 
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
@@ -46,11 +55,17 @@ def countdown(count):
 
     canvas.itemconfig(timer_text, text="{:02d}:{:02d}".format(count_min,count_sec))
     if count > 0:
-        window.after(1000, countdown, count - 1)
+        global timer 
+        timer = window.after(1000, countdown, count - 1)
+        
     else:
         start_timer()
-
-
+        mark = ""
+        work_session = math.floor(reps/2)
+        for _ in range(work_session):
+            mark += "✔"
+        check_mark.config(text=mark)
+            
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Pomodoro")
@@ -68,16 +83,19 @@ canvas.grid(column=1, row=1)
 timer_label = Label(text="Timer", font=(FONT_NAME, 40 , "bold"), fg=GREEN, bg=YELLOW)
 timer_label.grid(column=1, row=0)
 
-def reset_timer():
-    pass 
+
+    
 
 # Create a button for start 
-start_button = Button(text="Start", command=start_timer, highlightthickness=0 ).grid(column=0, row=3) #, command=pass ) , command=countdown(1)
+start_button = Button(text="Start", command=start_timer, highlightthickness=0 )
+start_button.grid(column=0, row=3) #, command=pass ) , command=countdown(1)
 
 # Create a button for reset 
-reset_button = Button(text="Reset", command=reset_timer,  highlightthickness=0).grid(column=3, row=3) #, command=pass )
+reset_button = Button(text="Reset", command=reset_timer,  highlightthickness=0)
+reset_button.grid(column=3, row=3) #, command=pass )
 
 # create a check_mark 
-check_mark = Label(text="✔", font=(FONT_NAME, 24 , "bold"), fg=GREEN, bg=YELLOW).grid(column=1, row=4)
+check_mark = Label(font=(FONT_NAME, 24 , "bold"), fg=GREEN, bg=YELLOW)
+check_mark.grid(column=1, row=4)
 
 window.mainloop()
