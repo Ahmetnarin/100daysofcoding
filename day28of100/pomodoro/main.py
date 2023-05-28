@@ -8,18 +8,33 @@ FONT_NAME = "Courier"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
+reps = 0 
 
 # ---------------------------- TIMER RESET ------------------------------- # 
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 import datetime 
 
-def stat_timer():
-    # 1 min = 60 seconds
-    
+def start_timer():
+    global reps
+    work_sec = 1 * 60
+    short_break_sec =  1 * 60
+    long_break_sec = 1 * 60
 
+    reps += 1
+    if reps % 2 != 0:
+        countdown(work_sec)
+        # print("reps % 2 != 0--> ", reps)
+        timer_label.config(text="WORK" ,font=(FONT_NAME, 40 , "bold"), fg=GREEN, bg=YELLOW)
+    if reps == 8:
+        countdown(long_break_sec)
+        # print("reps == 8--> ", reps)
+        timer_label.config(text="LONG BREAK" ,font=(FONT_NAME, 40 , "bold"), fg=GREEN, bg=YELLOW)
+    if reps % 2 == 0:
+        countdown(short_break_sec)
+        # print("reps % 2 == 0--> ",reps)
+        timer_label.config(text="SHORT BREAK", font=(FONT_NAME, 40 , "bold"), fg=GREEN, bg=YELLOW)
 
-    countdown(5*60)
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 import time 
@@ -32,6 +47,9 @@ def countdown(count):
     canvas.itemconfig(timer_text, text="{:02d}:{:02d}".format(count_min,count_sec))
     if count > 0:
         window.after(1000, countdown, count - 1)
+    else:
+        start_timer()
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
@@ -54,7 +72,7 @@ def reset_timer():
     pass 
 
 # Create a button for start 
-start_button = Button(text="Start", command=stat_timer, highlightthickness=0 ).grid(column=0, row=3) #, command=pass ) , command=countdown(1)
+start_button = Button(text="Start", command=start_timer, highlightthickness=0 ).grid(column=0, row=3) #, command=pass ) , command=countdown(1)
 
 # Create a button for reset 
 reset_button = Button(text="Reset", command=reset_timer,  highlightthickness=0).grid(column=3, row=3) #, command=pass )
