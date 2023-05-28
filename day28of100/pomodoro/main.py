@@ -12,21 +12,28 @@ LONG_BREAK_MIN = 20
 # ---------------------------- TIMER RESET ------------------------------- # 
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
+import datetime 
 
 def stat_timer():
-    countdown(5)
+    # 1 min = 60 seconds
+    
+
+
+    countdown(5*60)
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 import time 
+import math 
 
 def countdown(count):
-    canvas.itemconfig(timer_text, text=count)
+    count_min = math.floor(count / 60)
+    count_sec = count % 60
+
+    canvas.itemconfig(timer_text, text="{:02d}:{:02d}".format(count_min,count_sec))
     if count > 0:
         window.after(1000, countdown, count - 1)
-    elif count == 0:
-        window.after(enable_button)
-# ---------------------------- UI SETUP ------------------------------- #
 
+# ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Pomodoro")
 window.config(padx=100,pady=50, bg=YELLOW)
@@ -39,15 +46,11 @@ canvas.grid(column=1, row=1)
 
 # countdown(50)
 
-
 # Create a label for Timer 
 timer_label = Label(text="Timer", font=(FONT_NAME, 40 , "bold"), fg=GREEN, bg=YELLOW)
 timer_label.grid(column=1, row=0)
 
 def reset_timer():
-    pass 
-
-def period():
     pass 
 
 # Create a button for start 
