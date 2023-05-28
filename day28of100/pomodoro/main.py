@@ -27,12 +27,6 @@ import time
 #         seconds -= 1
 
 
-
-
-
-
-
-
 def countdown(count):
     canvas.itemconfig(timer_text, text=count)
     if count > 0:
