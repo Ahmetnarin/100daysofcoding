@@ -24,24 +24,24 @@ logo_img = PhotoImage(file="logo.png")
 canvas.create_image(100,100, image = logo_img)
 canvas.grid(column=1 , row = 0)
 
-# website 
+# Labels
 website_label = Label(text="Website", font=(FONT_NAME, 12), justify="left")
 website_label.grid(column=0, row=1)
-
-entry_website_text = Entry(window, width=35)
-entry_website_text.grid(column=1 , row=1)
-
 email_label = Label(text="Email/Username", font=(FONT_NAME, 12), justify="left")
 email_label.grid(column=0, row=2)
-
-entry_email_or_username_text = Entry(window, width=35)
-entry_email_or_username_text.grid(column=1 , row=2 )
-
 password_label = Label(text="Password", font=(FONT_NAME, 12), justify="left")
 password_label.grid(column=0, row=3)
-
+# Entries  
+entry_website_text = Entry(window, width=35)
+entry_website_text.grid(column=1 , row=1)
+entry_email_or_username_text = Entry(window, width=35)
+entry_email_or_username_text.grid(column=1 , row=2 )
 entry_password_or_username_text = Entry(window, width=35)
 entry_password_or_username_text.grid(column=1 , row=3)
+
+
+
+
 
 generate_password_button = Button(text="Generate Password", width=30)
 generate_password_button.grid(row=4,column=1)
