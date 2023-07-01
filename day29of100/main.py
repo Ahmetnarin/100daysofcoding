@@ -12,10 +12,6 @@ def generate_password():
 
     # entry_email_or_username_text.insert(END, "ahmetnarin568@gmail.com")
     entry_password.insert(END ,  password)
-
-
-
-
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 # import numpy as np 
 # def save(*args):
@@ -46,8 +42,6 @@ def save():
         # messagebox.WARNING("you have to fill all field?")   
         messagebox.askretrycancel(title="Try again?" , message="You have to fill all field?")
         print("I am working")    
-        
-        
 
 # ---------------------------- UI SETUP ------------------------------- #
 FONT_NAME =  "courier"
@@ -83,9 +77,6 @@ entry_email_or_username_text.grid(column=1 , row=2 )
 entry_password = Entry(window, width=35)
 entry_password.grid(column=1 , row=3)
 
-
-
-
 # Buttons 
 generate_password_button = Button(text="Generate Password", command=lambda: generate_password(), width=30, highlightthickness=0)
 generate_password_button.grid(row=4,column=1)
@@ -93,10 +84,5 @@ generate_password_button.grid(row=4,column=1)
 print(type(entry_website_text))
 button_add= Button(text="Add", command=lambda: save(), highlightthickness=0, width=30)
 button_add.grid(column=1, row=5)
-
-
-
-
-
 
 window.mainloop()
