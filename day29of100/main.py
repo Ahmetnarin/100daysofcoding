@@ -1,17 +1,56 @@
 from tkinter import *
+from tkinter import messagebox 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
+import random 
+import string
+
+def generate_password():
+    entry_password.delete(0,END)  
+    length = 12
+    characters = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(random.choice(characters) for _ in range(length))
+
+    # entry_email_or_username_text.insert(END, "ahmetnarin568@gmail.com")
+    entry_password.insert(END ,  password)
+
 
 
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
-def add_new_passwort(*args):
-    for arg in args:
-        with open("passwords.txt" , "w") as file:
-            file.write(arg )
+# import numpy as np 
+# def save(*args):
+#     arr = np.array(args)
+#     print(arr)
+#     with open("passwords.txt" , "w") as file:
+#         for i in arr:
+#             file.write("{} | ".format(i) )
+#         file.write("\n-----------------------------------")
+
+def save():
+
+    website = entry_website_text.get()
+    email = entry_email_or_username_text.get()
+    password = entry_password.get()
+
+    if website and email and password:
+        is_ok = messagebox.askokcancel(title="Sure?" , message=f"Email: {email}\nPassword: {password}\nWould you like to save this password?")
+
+        if is_ok:
+            with open("passwords.txt" , "a") as data_file: 
+                data_file.write(f"{website} | {email} | {password}")
+                data_file.write("\n-----------------------------------------------------------------------------------------\n")
+                entry_website_text.delete(0,END)
+                entry_email_or_username_text.delete(0,END)
+                entry_password.delete(0,END)
+    else:
+        # messagebox.WARNING("you have to fill all field?")   
+        messagebox.askretrycancel(title="Try again?" , message="You have to fill all field?")
+        print("I am working")    
+        
+        
 
 # ---------------------------- UI SETUP ------------------------------- #
 FONT_NAME =  "courier"
-
 
 window = Tk()
 window.title("Password Generator")
@@ -39,7 +78,7 @@ password_label.grid(column=0, row=3)
 entry_website_text = Entry(window, width=35)
 entry_website_text.grid(column=1 , row=1)
 entry_email_or_username_text = Entry(window, width=35)
-entry_email_or_username_text.insert(END, "ahmetnarin568@gmail.com")
+# entry_email_or_username_text.insert(END, "ahmetnarin568@gmail.com")
 entry_email_or_username_text.grid(column=1 , row=2 )
 entry_password = Entry(window, width=35)
 entry_password.grid(column=1 , row=3)
@@ -48,13 +87,13 @@ entry_password.grid(column=1 , row=3)
 
 
 # Buttons 
-generate_password_button = Button(text="Generate Password", width=30)
+generate_password_button = Button(text="Generate Password", command=lambda: generate_password(), width=30, highlightthickness=0)
 generate_password_button.grid(row=4,column=1)
 
 print(type(entry_website_text))
-button_add= Button(text="Add", command=add_new_passwort(entry_website_text,entry_email_or_username_text,entry_password ), highlightthickness=0, width=30)
+button_add= Button(text="Add", command=lambda: save(), highlightthickness=0, width=30)
 button_add.grid(column=1, row=5)
-button_add.pack()
+
 
 
 
