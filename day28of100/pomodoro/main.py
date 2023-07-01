@@ -20,7 +20,7 @@ def reset_timer():
     global reps 
     reps = 0
     start_button.config(state=NORMAL)
-
+ 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 import datetime 
 
