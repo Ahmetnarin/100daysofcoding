@@ -1,5 +1,6 @@
 from tkinter import *
-from tkinter import messagebox 
+from tkinter import messagebox
+import pyperclip  
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 import random 
 import string
@@ -9,6 +10,7 @@ def generate_password():
     length = 12
     characters = string.ascii_letters + string.digits + string.punctuation
     password = ''.join(random.choice(characters) for _ in range(length))
+    pyperclip.copy(password)
 
     # entry_email_or_username_text.insert(END, "ahmetnarin568@gmail.com")
     entry_password.insert(END ,  password)
