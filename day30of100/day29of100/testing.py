@@ -1,4 +1,4 @@
-{
+my_dict = {
     "hrthrh": {
         "email": "angela@gmail.com",
         "password": "%&*E0Mnm4Hjgn6l#1"
@@ -25,6 +25,16 @@
     },
     "Amazon": {
         "email": "angela@gmail.com",
-        "password": "+f7c84yoO&)ccX$t"
+        "password": "Xn+FHX$*rp81P"
     }
 }
+
+print(my_dict["Amazon"]["password"])
+
+input_website = input("Enter the website name: ")
+
+if input_website in my_dict:
+    password = my_dict[input_website]["password"]
+    print("Password is: " , password )
+else:
+    print("Not found!")

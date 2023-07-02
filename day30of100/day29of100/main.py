@@ -58,7 +58,32 @@ def save():
             password_entry.delete(0,END)
 
 def search():
-    pass
+
+    # Reading the data from json file 
+    with open("data.json", "r") as json_file:
+        data = json.load(json_file)
+        # print(data)
+
+    # What is input 
+    website = website_entry.get()
+    
+    if website in data:
+        password = data[website]["password"]
+        password_entry.delete(0,END)
+        password_entry.insert(0,password)
+        print(password)
+    else: 
+        print("Not found")
+        website_entry.delete(0,END)
+        password_entry.delete(0,END)
+
+
+def copy():
+    
+    password = password_entry.get()
+    pyperclip.copy(password)
+    
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
@@ -91,8 +116,14 @@ password_entry.grid(row=3, column=1)
 # Buttons
 generate_password_button = Button(text="Generate Password", command=generate_password)
 generate_password_button.grid(row=3, column=2)
+# search button 
 search_button = Button(text="Search", command=search)
 search_button.grid(row=1, column=2)
+# copy password button 
+copy_button = Button(text="Copy Password",width=36, command=copy)
+copy_button.grid(row=5, column=1, columnspan=2)
+
+
 add_button = Button(text="Add", width=36, command=save)
 add_button.grid(row=4, column=1, columnspan=2)
 
