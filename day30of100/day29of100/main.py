@@ -59,27 +59,29 @@ def save():
 
 def search():
 
-    # Reading the data from json file 
-    with open("data.json", "r") as json_file:
-        data = json.load(json_file)
-        # print(data)
-
-    # What is input 
-    website = website_entry.get()
-    
-    if website in data:
-        password = data[website]["password"]
-        password_entry.delete(0,END)
-        password_entry.insert(0,password)
-        print(password)
-    else: 
-        print("Not found")
-        website_entry.delete(0,END)
-        password_entry.delete(0,END)
+    try:
+        # Reading the data from json file 
+        with open("data.json", "r") as json_file:
+            data = json.load(json_file)
+            # print(data)
+    except FileNotFoundError:
+        messagebox.showinfo(title="Error" , message="Not found a file. Pls make sure if a data file exist")
+    else:
+        # What is input 
+        website = website_entry.get()
+        
+        if website in data:
+            password = data[website]["password"]
+            password_entry.delete(0,END)
+            password_entry.insert(0,password)
+            print(password)
+        else: 
+            print("Not found")
+            website_entry.delete(0,END)
+            password_entry.delete(0,END)
 
 
 def copy():
-    
     password = password_entry.get()
     pyperclip.copy(password)
     
@@ -109,7 +111,7 @@ website_entry.grid(row=1, column=1, columnspan=2)
 website_entry.focus()
 email_entry = Entry(width=35)
 email_entry.grid(row=2, column=1, columnspan=2)
-email_entry.insert(0, "angela@gmail.com")
+email_entry.insert(0, "ahmetnarin568@gmail.com")
 password_entry = Entry(width=21)
 password_entry.grid(row=3, column=1)
 
